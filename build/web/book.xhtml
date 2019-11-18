@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Book</title>
+        <h:outputStylesheet name="style.css" library="css" />
+    </h:head>
+    <h:body>
+        <h:form>
+            <h2><h:outputText value="New book" rendered="#{listing.selectedBook.id==null}"/></h2>           
+            <h2><h:outputText value="Edit book data" rendered="#{listing.selectedBook.id!=null}"/></h2>
+            <br/>
+            <br/>
+            <h:panelGrid class="panel" columns="3">
+                Author:
+                <h:inputText class="textBox" id="name" value="#{listing.selectedBook.author}" required="true"/> 
+                <h:message for="name" class="warning"/>
+                Title: 
+                <h:inputText class="textBox" id="title" value="#{listing.selectedBook.title}" required="true"/>
+                <h:message for="title" class="warning"/>
+                Pages: 
+                <h:inputText class="textBox" id="pages" value="#{listing.selectedBook.pages}" required="true"/>
+                <h:message for="pages" class="warning"/>                
+            </h:panelGrid>
+            <h:commandButton class="button buttonSmall" value="Cancel" action="books" immediate="true"/>                
+            <h:commandButton class="button buttonSmall" value="Save" action="#{listing.bookSave()}"/>
+        </h:form>
+    </h:body>
+</html>
+

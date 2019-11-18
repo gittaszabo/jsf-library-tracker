@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Books</title>
+        <h:outputStylesheet name="style.css" library="css" />
+    </h:head>
+    <h:body>
+        <h:form>
+            <h2>Books</h2>
+            <div class="left">
+                <h:commandButton class="button buttonSmall" value="Back" action="index"/>
+                <h:commandButton class="button buttonSmall" value="New book" action="#{listing.newBook()}"/>   
+            </div>
+            <br/>
+            <h:dataTable value="#{listing.books}" var="book">
+                <h:column>
+                    <f:facet name="header">ID</f:facet>
+                        #{book.id}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Author</f:facet>
+                        #{book.author}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Title</f:facet>
+                        #{book.title}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Pages</f:facet>
+                        #{book.pages}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Action</f:facet>
+                    <h:commandButton class="buttonSimple" value="Edit" action="#{listing.bookEdit(book)}"/>
+                    <h:commandButton class="buttonSimple" value="Delete" action="#{listing.toDeleteBook(book)}"/>
+                </h:column>
+            </h:dataTable>
+        </h:form>
+    </h:body>
+</html>
+

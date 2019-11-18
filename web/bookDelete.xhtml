@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Delete a book</title>
+        <h:outputStylesheet name="style.css" library="css" />
+    </h:head>
+    <h:body>
+        <h:form>
+            <h3>Do you really want to delete this book?</h3>            
+            <br/>
+            <br/>
+            <h:panelGrid class="panel" columns="2">
+                Author: <h:outputText value="#{listing.selectedBook.author}"/>
+                Title: <h:outputText value="#{listing.selectedBook.title}"/>
+                Pages: <h:outputText value="#{listing.selectedBook.pages}"/>            
+            </h:panelGrid>
+            <div class="left">
+                <h:commandButton class="button buttonSmall" value="Cancel" action="books" immediate="true"/>
+                <h:commandButton class="button buttonSmall" value="Delete" action="#{listing.bookDelete()}"/>
+            </div>            
+        </h:form>
+    </h:body>
+</html>
+

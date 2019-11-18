@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Book status</title>
+        <h:outputStylesheet name="style.css" library="css" />
+    </h:head>
+    <h:body>
+        <h2>Status of the selected book</h2>
+        <h:form>
+            <div class="left">
+                <h:commandButton class="button buttonSmall" value="Back" action="index"/>
+                <br/>
+                <h3>Selected book:</h3>
+            </div>
+            <h:panelGrid class="panel" columns="2">
+                Author<h:outputText value="#{listing.selectedBook.author}"/>
+                Title: <h:outputText value="#{listing.selectedBook.title}"/> 
+                Current status: <h:outputText value="#{listing.selectedBook.member}"/> 
+            </h:panelGrid>
+            <div class="left">
+                <h3>Select new status!</h3>            
+                <h3>New status:</h3>
+                <h:outputText value=" #{listing.selectedMember}"                                                       
+                              rendered="#{listing.selectedMember.name!=null}"/>
+                <br/>
+                <h3>Set due date:</h3> 
+                <h:inputText class="textBox" id="dueDate" value="#{listing.selectedDate}">                
+                    <f:convertDateTime pattern="dd.MM.yyyy"/>
+                </h:inputText>
+                <br/>
+                <h:commandButton class="button buttonSmall" value="Cancel" action="#{listing.setSelectedMember(listing.selectedBook.member)}"/>
+                <h:commandButton class="button buttonSmall" value="Save" action="#{listing.loan()}"/>
+            </div>
+            <br/>
+            <h:dataTable first="1" value="#{listing.members}" var="member">
+                <h:column>
+                    <f:facet name="header">Name</f:facet>
+                        #{member.name}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Email</f:facet>
+                        #{member.email}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Loan</f:facet>
+                    <h:commandButton class="buttonSimple" value="Select" action="#{listing.memberloan(member)}"/>                    
+                </h:column>
+            </h:dataTable>
+        </h:form>
+    </h:body>
+</html>
+

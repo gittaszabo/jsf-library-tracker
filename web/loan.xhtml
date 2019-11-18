@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Loan</title>
+        <h:outputStylesheet name="style.css" library="css" />
+    </h:head>
+    <h:body>
+        <h3>Loan books</h3>
+        <h:form>
+            <div class="left">
+                <h:commandButton class="button buttonSmall" value="Back" action="index"/>
+                <h:commandButton class="button buttonSmall" value="All books" action="#{listing.allBook()}"/>
+                <br/>
+                <h3>Select a member to see the loaned out books!</h3>
+                <h:selectOneMenu value="#{listing.selectedMemberId}">
+                    <f:selectItems value="#{listing.members}" var="member" itemValue="#{member.id}"  />
+                </h:selectOneMenu>
+                <h:commandButton class="button buttonSmall" value="Select" action="#{listing.memberSelect()}"/>                              
+            </div>
+            <br/>
+            <h:dataTable value="#{listing.memberBooks}" var="book">
+                <h:column>
+                    <f:facet name="header">ID</f:facet>
+                        #{book.id}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Author</f:facet>
+                        #{book.author}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Title</f:facet>
+                        #{book.title}
+                </h:column>              
+                <h:column>
+                    <f:facet name="header">Member</f:facet>
+                        #{book.member}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Due date</f:facet>
+                    <h:outputText value="#{book.date}" >
+                        <f:convertDateTime pattern="dd.MM.yyyy"/>
+                    </h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Action</f:facet>
+                    <h:commandButton rendered="#{book.member.id!=0}" class="buttonSimple" value="Return" action="#{listing.bookReturn(book)}"/>
+                    <h:commandButton rendered="#{book.member.id==0}" class="buttonSimple" value="Loan" action="#{listing.bookSelect(book)}"/>
+                </h:column>
+            </h:dataTable>
+        </h:form>
+    </h:body>
+</html>
+

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scene Scope="Project" version="2">
+    <Scope Scope="Faces Configuration Only"/>
+    <Scope Scope="Project">
+        <Node id="index.xhtml" x="424" y="426" zoom="true"/>
+        <Node id="memberDeleteError.xhtml" x="102" y="194" zoom="true"/>
+        <Node id="loanSuccessful.xhtml" x="587" y="692" zoom="true"/>
+        <Node id="book.xhtml" x="658" y="292" zoom="true"/>
+        <Node id="member.xhtml" x="1150" y="150" zoom="true"/>
+        <Node id="members.xhtml" x="95" y="394" zoom="true"/>
+        <Node id="loanError.xhtml" x="32" y="705" zoom="true"/>
+        <Node id="loanSelectStatus.xhtml" x="286" y="642" zoom="true"/>
+        <Node id="loan.xhtml" x="301" y="554" zoom="true"/>
+        <Node id="books.xhtml" x="695" y="391" zoom="false"/>
+        <Node id="memberDelete.xhtml" x="19" y="291" zoom="true"/>
+        <Node id="bookDelete.xhtml" x="642" y="219" zoom="true"/>
+    </Scope>
+    <Scope Scope="All Faces Configurations"/>
+</Scene>
